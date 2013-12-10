@@ -1,0 +1,48 @@
+.site_slogan {
+    margin-top:20px;
+    font-style: italic;
+    /* width: 500px; */
+}
+
+.ph_tour {
+  border:1px solid black;
+    padding:20px;
+  text-align:center;
+    margin:20px;
+
+}
+
+.ph_app {
+    border:1px solid black;
+    padding:20px;
+    text-align:center;
+    margin:20px;
+
+}
+
+.ph_footer {
+    text-align:center;
+    font-style:italic;
+    font-weight:bold;
+}
+
+.row {
+    margin:10px 0;
+}
+
+.button_container {
+    margin:20px 0;
+    font-weight:bold;
+    height:70px;
+    padding-top: 20px;
+}
+
+.container .jumbotron {
+    padding: 30px;
+    margin:0px;
+
+}
+
+.profiles td {
+    vertical-align: middle !important;
+}
