@@ -30,6 +30,9 @@
             <thead>
             <tr>
                 <th>Name</th>
+                @if (Auth::user()->hasRole('admin'))
+                  <th>Owner</th>
+                @endif
                 <th>Origin</th>
                 <th>Remote</th>
                 <th>Local</th>
@@ -45,6 +48,9 @@
             <tr>
 
                 <td>{{$profile->name}}</td>
+                @if (Auth::user()->hasRole('admin'))
+                  <td>{{$profile->user->username}}</td>
+                @endif
                 <td>{{Origin::find($profile->origin_id)->country->short_name}}</td>
                 <td>{{Bridge::find($profile->bridge_id)->country->short_name}}</td>
                 <td>{{$profile->local}}</td>
@@ -69,9 +75,13 @@
     <div class="col-lg-4">
         <ul style="max-width: 300px;" class="nav nav-pills nav-stacked">
             <li class="active"><a href="{{{ URL::to('profile') }}}">Current Profiles</a></li>
+            <li>
             @if (Auth::user()->hasRole('admin'))
-               <li><a href="{{{ URL::to('profile/create') }}}">Add New Profile</a></li>
+               <a href="{{{ URL::to('profile/create') }}}">Add New Profile</a>
+            @else
+                <a href="{{{ URL::to('profile/create') }}}">Request New Profile</a>
             @endif
+            </li>
             <li><a href="#">Request Number</a></li>
         </ul>
     </div>

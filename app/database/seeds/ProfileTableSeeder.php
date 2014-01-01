@@ -31,19 +31,23 @@ class ProfileTableSeeder extends Seeder {
 
        // $country = Country::where('code', '=', 61)->firstOrFail();
 
-        $country = Country::where('code', '=', 61)->first();
-
-        $origin = new Origin;
-        $origin->name = 'Home';
-        $origin->number = '0286689234';
-        $origin->country()->associate($country);
-        $origin->save();
 
         $country = Country::where('code', '=', 64)->first();
-
+        $user = User::find(2);
         $origin = new Origin;
         $origin->name = 'NZ';
         $origin->number = '0286689234';
+        $origin->user()->associate($user);
+        $origin->country()->associate($country);
+        $origin->save();
+
+
+        $country = Country::where('code', '=', 61)->first();
+        $user = User::find(1);
+        $origin = new Origin;
+        $origin->name = 'Home';
+        $origin->number = '0286689234';
+        $origin->user()->associate($user);
         $origin->country()->associate($country);
         $origin->save();
 
@@ -55,8 +59,13 @@ class ProfileTableSeeder extends Seeder {
         $bridge->country()->associate($country);
         $bridge->save();
 
-        $user = User::find(1);
+        $bridge = new Bridge;
+        $bridge->number = '0600035179';
+        $bridge->country()->associate($country);
+        $bridge->save();
 
+
+        $user = User::find(1);
         //die("USER ID = $user->id");
 
         $profile = new Profile;

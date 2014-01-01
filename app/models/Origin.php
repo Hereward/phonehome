@@ -12,4 +12,9 @@ class Origin extends Eloquent
     {
         return $this->belongsTo('Country');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }
