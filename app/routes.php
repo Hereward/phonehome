@@ -135,6 +135,8 @@ Route::get('profile', array('before' => 'auth', function()
 
 Route::resource('profile', 'ProfileController');
 
+//Route::get('profile/create_admin', array('before' => 'auth', 'uses'=>'ProfileController@createAdmin'));
+
 //Route::get('profile', array('before' => 'auth', 'uses' => 'ProfileController@index'));
 
 //Route::get('profile/add', array('before' => 'auth', 'uses' => 'ProfileController@create'));

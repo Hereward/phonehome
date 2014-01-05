@@ -27,10 +27,12 @@
 		@section('styles')
 		@show
 		</style>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+
 		<![endif]-->
 
 		<!-- Favicons
@@ -81,5 +83,9 @@
 		<!-- Javascripts
 		================================================== -->
         {{ Basset::show('public.js') }}
+
+        {{-- <script src="{{{ asset('assets/js/rails.js') }}}"></script> --}}
+
+        <script src="{{{ asset('assets/js/laravel-ujs.js') }}}"></script>
 	</body>
 </html>

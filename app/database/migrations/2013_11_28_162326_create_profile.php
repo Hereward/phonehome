@@ -34,6 +34,8 @@ class CreateProfile extends Migration {
         Schema::create('origins', function($table)
         {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name', 128);
             $table->string('number', 128);
             $table->integer('country_id')->unsigned();
@@ -58,6 +60,20 @@ class CreateProfile extends Migration {
         });
 
 
+        Schema::create('profile_requests', function($table)
+        {
+            $table->increments('id');
+            $table->string('name', 128);
+            $table->string('local', 128);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('country_id')->unsigned();
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->enum('status', array('active', 'pending', 'off'));
+            $table->timestamps();
+        });
+
+
 
 
 	}
@@ -74,6 +90,8 @@ class CreateProfile extends Migration {
         Schema::drop('origins');
         Schema::drop('bridges');
         Schema::drop('countries');
+        Schema::drop('profile_requests');
+
 	}
 
 }
