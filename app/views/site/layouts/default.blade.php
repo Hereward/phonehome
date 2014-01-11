@@ -79,6 +79,16 @@
 
 		<!-- Container -->
 		<div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <!-- header -->
+
+                    @include('site/header')
+
+
+                    <!-- ./ header -->
+                </div>
+            </div>
 			<!-- Notifications -->
 			@include('notifications')
 			<!-- ./ notifications -->
