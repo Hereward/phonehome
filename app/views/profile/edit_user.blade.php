@@ -29,7 +29,7 @@
             {{ Form::label('name', 'Profile Name') }}
             {{ Form::text('name', null, array('class' => 'form-control')) }}
         </div>
-
+{{--
         <div class="form-group">
             {{ Form::label('user_id', 'User') }}
             <select name="user_id" class="form-control" placeholder="User">
@@ -39,7 +39,7 @@
                 @endforeach
             </select>
         </div>
-
+--}}
         <div class="form-group">
             {{ Form::label('local', 'Local') }}
             {{ Form::text('local', null, array('class' => 'form-control')) }}
@@ -47,11 +47,11 @@
 
 
         <div class="form-group">
-            {{ Form::label('bridge_id', 'Bridge') }}
+            {{ Form::label('bridge_id', 'Bridge  (Read Only)') }}
             <select name="bridge_id" class="form-control" placeholder="Bridge">
-                <option value="">-- choose one --</option>
+
                 @foreach ($bridges as $bridge)
-                <option @if($profile['bridge_id'] == $bridge->id)selected@endif value="{{$bridge->id}}">{{$bridge->country->short_name}} - {{$bridge->number}}</option>
+                <option @if($profile['bridge_id'] == $bridge->id)selected @else disabled="disabled" @endif value="{{$bridge->id}}">{{$bridge->country->short_name}} - {{$bridge->number}}</option>
 
                 @endforeach
             </select>
@@ -60,11 +60,11 @@
 
 
         <div class="form-group">
-            {{ Form::label('origin_id', 'Origin') }}
+            {{ Form::label('origin_id', 'Origin (Read Only)') }}
             <select name="origin_id" class="form-control" placeholder="Origin">
-                <option value="">-- choose one --</option>
+
                 @foreach ($origins as $origin)
-                <option @if($profile['origin_id'] == $origin->id)selected@endif value="{{$origin->id}}">{{$origin->country->short_name}}
+                <option @if($profile['origin_id'] == $origin->id) selected @else disabled="disabled" @endif value="{{$origin->id}}">{{$origin->country->short_name}}
                 - {{$origin->number}}
                 - {{$origin->user->username}}</option>
 

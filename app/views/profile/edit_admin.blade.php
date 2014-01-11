@@ -23,7 +23,7 @@
 
         {{ Form::model($profile, array('route' => array('profile.update', $profile->id), 'method' => 'PUT')) }}
 
-        {{ Form::hidden('user_id', $user_id) }}
+
 
         <div class="form-group">
             {{ Form::label('name', 'Profile Name') }}

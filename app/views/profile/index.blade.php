@@ -29,24 +29,28 @@
         <table class="table profiles">
             <thead>
             <tr>
+                <th>Status</th>
                 <th>Name</th>
                 @if (Auth::user()->hasRole('admin'))
                   <th>Owner</th>
                 @endif
+
                 <th>Origin</th>
                 <th>Remote</th>
                 <th>Local</th>
                 <th>Bridge</th>
                 <th>Home</th>
 
-                <th>Status</th>
+
             </tr>
             </thead>
             <tbody>
             @foreach ($profiles as $profile)
 
             <tr>
-
+                <td><button title="{{$profile->status}}" type="button" class="btn btn-@if ($profile->status == 'active'){{'success'}}
+                @elseif ($profile->status == 'off'){{'danger'}}
+                @else{{'warning'}}@endif">&nbsp;&nbsp;</button></td>
                 <td>{{$profile->name}}</td>
                 @if (Auth::user()->hasRole('admin'))
                   <td>{{$profile->user->username}}</td>
@@ -57,8 +61,8 @@
                 <td>{{$profile->bridge_number}}</td>
                 <td>{{$profile->home_number}}</td>
 
-                <td>{{$profile->status}}</td>
-                <td><a class="btn btn-small btn-success" href="{{ URL::to('profile/' . $profile->id) }}">Details</a></td>
+
+                <td><a href="{{ URL::to('profile/' . $profile->id) }}">Details</a></td>
 
             </tr>
             @endforeach

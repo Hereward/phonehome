@@ -60,7 +60,7 @@ class BlogController extends BaseController {
 			// a page or a blog post didn't exist.
 			// So, this means that it is time for
 			// 404 error page.
-			return App::abort(404,"Page not found ($slug)");
+			return App::abort(404);
 		}
 
 		// Get this post comments

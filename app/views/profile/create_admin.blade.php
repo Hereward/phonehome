@@ -21,6 +21,8 @@
 
         {{ Form::open(array('url' => 'profile')) }}
 
+        {{ Form::hidden('status', 'pending') }}
+
         <div class="form-group">
             {{ Form::label('name', 'Profile Name') }}
             {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}

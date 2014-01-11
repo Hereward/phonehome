@@ -2,8 +2,6 @@
 
 class BaseController extends Controller {
 
-    //public $cu, $xuser, $user_id;
-
     /**
      * Initializer.
      *
@@ -15,10 +13,6 @@ class BaseController extends Controller {
         $this->beforeFilter('csrf', array('on' => 'post'));
         $this->user = new User;
         $this->current_user = $this->user->currentUser();
-
-       // $this->user_id = $this->cu->id;
-
-
     }
 
 	/**

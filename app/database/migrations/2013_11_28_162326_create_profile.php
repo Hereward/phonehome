@@ -60,16 +60,26 @@ class CreateProfile extends Migration {
         });
 
 
-        Schema::create('profile_requests', function($table)
+        Schema::create('profile_update_requests', function($table)
         {
             $table->increments('id');
+            $table->integer('profile_id')->unsigned();
             $table->string('name', 128);
             $table->string('local', 128);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->enum('status', array('active', 'pending', 'off'));
+            $table->enum('status', array('pending', 'complete'));
+            $table->timestamps();
+        });
+
+
+        Schema::create('profile_create_requests', function($table)
+        {
+            $table->increments('id');
+            $table->integer('profile_id')->unsigned();
+            $table->string('name', 128);
+            $table->string('local', 128);
+            $table->integer('user_id')->unsigned();
+            $table->enum('status', array('pending', 'complete'));
             $table->timestamps();
         });
 
@@ -85,13 +95,14 @@ class CreateProfile extends Migration {
 	 */
 	public function down()
 	{
+        Schema::drop('profile_create_requests');
+        Schema::drop('profile_update_requests');
 
 		Schema::drop('profiles');
         Schema::drop('origins');
         Schema::drop('bridges');
-        Schema::drop('countries');
-        Schema::drop('profile_requests');
 
+        Schema::drop('countries');
 	}
 
 }

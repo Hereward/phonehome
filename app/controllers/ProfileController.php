@@ -12,8 +12,15 @@ class ProfileController extends \BaseController {
         $this->countries = Country::all();
         $this->users = User::all();
         $this->profile_obj = new Profile;
+        $this->get_dummy_values();
 
     }
+
+    public function get_dummy_values() {
+        $this->dummy_origin = Origin::where('number', '=', '00000000')->first();
+        $this->dummy_bridge = Bridge::where('number', '=', '00000000')->first();
+    }
+
 
 	/**
 	 * Display a listing of the resource.
@@ -98,6 +105,8 @@ class ProfileController extends \BaseController {
             return View::make('profile/create_admin',$data);
         }
         else {
+            $data['bridge_id'] = $this->dummy_bridge->id;
+            $data['origin_id'] = $this->dummy_origin->id;
             return View::make('profile/create_user',$data);
         }
 
@@ -161,11 +170,27 @@ class ProfileController extends \BaseController {
             $profile->local       = Input::get('local');
             $profile->bridge_id      = Input::get('bridge_id');
             $profile->origin_id = Input::get('origin_id');
+            $profile->status = Input::get('status');
            // $profile->country_id = Input::get('country_id');
 
 
             //$profile->user_id = $this->user->currentUser()->id;
             $profile->save();
+
+            $profile_id = $profile->id;
+           // $origin = Country::find($id);
+            //$timestamp = new DateTime;
+            $timestamp = date('Y-m-d H:i:s');
+
+            DB::table('profile_create_requests')->insert(
+                array(
+                    array('profile_id' => $profile_id,
+                        'name' => $profile->name,
+                        'local' => $profile->local,
+                        'user_id' => $profile->user_id,
+                        'created_at' => $timestamp,
+                        'updated_at' => $timestamp)
+                ));
 
             // redirect
             Session::flash('message', 'Successfully created Profile!');
@@ -242,6 +267,7 @@ class ProfileController extends \BaseController {
         $data['bridges'] = $this->bridges;
         $data['countries'] = $this->countries;
         $data['users'] = $this->users;
+        $data['user_id'] = $this->current_user->id;
 
         //$data = array();
         $user_id = $this->current_user->id;
@@ -268,7 +294,14 @@ class ProfileController extends \BaseController {
 
         // $data['boojam'] = 'wee';
 
-        return View::make('profile.edit',$data);
+        if (Auth::user()->hasRole('admin')) {
+            return View::make('profile/edit_admin',$data);
+        }
+        else {
+            return View::make('profile/edit_user',$data);
+        }
+
+        //return View::make('profile.edit',$data);
 	}
 
 	/**
@@ -318,6 +351,21 @@ class ProfileController extends \BaseController {
 
             //$profile->user_id = $this->user->currentUser()->id;
             $profile->save();
+
+            $profile_id = $profile->id;
+            // $origin = Country::find($id);
+            //$timestamp = new DateTime;
+            $timestamp = date('Y-m-d H:i:s');
+
+            DB::table('profile_update_requests')->insert(
+                array(
+                    array('profile_id' => $profile_id,
+                        'name' => $profile->name,
+                        'local' => $profile->local,
+                        'user_id' => $profile->user_id,
+                        'created_at' => $timestamp,
+                        'updated_at' => $timestamp)
+                ));
 
             // redirect
             Session::flash('message', 'Successfully edited Profile!');

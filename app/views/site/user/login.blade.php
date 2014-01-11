@@ -1,4 +1,4 @@
-@extends('site.layouts.default_lite')
+@extends('site.layouts.default')
 
 {{-- Web site Title --}}
 @section('title')

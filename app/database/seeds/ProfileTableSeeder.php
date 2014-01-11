@@ -7,6 +7,8 @@ class ProfileTableSeeder extends Seeder {
         DB::table('profiles')->delete();
         DB::table('origins')->delete();
         DB::table('bridges')->delete();
+        DB::table('profile_create_requests')->delete();
+        DB::table('profile_update_requests')->delete();
         DB::table('countries')->delete();
 
 
@@ -14,6 +16,8 @@ class ProfileTableSeeder extends Seeder {
 
         DB::table('countries')->insert(
             array(
+                array('code' => '0', 'short_name' => '--', 'name' => 'Empty','created_at' => new DateTime,
+                    'updated_at' => new DateTime),
                 array('code' => '61', 'short_name' => 'AU', 'name' => 'Australia','created_at' => new DateTime,
                     'updated_at' => new DateTime),
                 array('code' => '66', 'short_name' => 'TH', 'name' => 'Thailand','created_at' => new DateTime,
@@ -24,58 +28,76 @@ class ProfileTableSeeder extends Seeder {
                     'updated_at' => new DateTime),
             ));
 
-
-        //$country = DB::table('countries')->where('code', '61')->first();
-
-        //$country->where('code', '61')->first();
-
-       // $country = Country::where('code', '=', 61)->firstOrFail();
-
-
-        $country = Country::where('code', '=', 64)->first();
         $user = User::find(2);
+
+        // Setup Thailand bridge
+        $country = Country::where('code', '=', 66)->first();
+        $thailand_bridge = new Bridge;
+        $thailand_bridge->number = '0600035178';
+        $thailand_bridge->country()->associate($country);
+        $thailand_bridge->save();
+
+        // Setup Vietnam bridge
+        $country = Country::where('code', '=', 84)->first();
+        $vietnam_bridge = new Bridge;
+        $vietnam_bridge->number = '0600035179';
+        $vietnam_bridge->country()->associate($country);
+        $vietnam_bridge->save();
+
+        // Setup Main Origin
+        $country = Country::where('code', '=', 61)->first();
+        $origin = new Origin;
+        $origin->name = 'Home';
+        $origin->number = '0286689235';
+        $origin->user()->associate($user);
+        $origin->country()->associate($country);
+        $origin->save();
+
+        // PROFILE 1 (Thailand)
+        $profile = new Profile;
+        $profile->name = 'Example';
+        $profile->user()->associate($user);
+        $profile->origin()->associate($origin);
+        $profile->local = '0917070884';
+        $profile->status = 'active';
+        $profile->bridge()->associate($thailand_bridge);
+        $profile->save();
+
+        // PROFILE 2 (Vietnam)
+        $profile = new Profile;
+        $profile->name = 'Example 2';
+        $profile->user()->associate($user);
+        $profile->origin()->associate($origin);
+        $profile->local = '0917070883';
+        $profile->status = 'off';
+        $profile->bridge()->associate($vietnam_bridge);
+        $profile->save();
+
+/*
         $origin = new Origin;
         $origin->name = 'NZ';
         $origin->number = '0286689234';
         $origin->user()->associate($user);
         $origin->country()->associate($country);
         $origin->save();
+*/
 
 
-        $country = Country::where('code', '=', 61)->first();
+        // DUMMY VALUES
+        $country = Country::where('code', '=', 0)->first();
+
         $user = User::find(1);
         $origin = new Origin;
-        $origin->name = 'Home';
-        $origin->number = '0286689234';
+        $origin->name = 'Empty';
+        $origin->number = '00000000';
         $origin->user()->associate($user);
         $origin->country()->associate($country);
         $origin->save();
 
-
-        $country = Country::where('code', '=', 66)->first();
-
         $bridge = new Bridge;
-        $bridge->number = '0600035178';
+        $bridge->number = '00000000';
         $bridge->country()->associate($country);
         $bridge->save();
-
-        $bridge = new Bridge;
-        $bridge->number = '0600035179';
-        $bridge->country()->associate($country);
-        $bridge->save();
-
-
-        $user = User::find(1);
-        //die("USER ID = $user->id");
-
-        $profile = new Profile;
-        $profile->name = 'Example';
-        $profile->user()->associate($user);
-        $profile->origin()->associate($origin);
-        $profile->local = '0917070883';
-        $profile->bridge()->associate($bridge);
-        //$profile->country_id = $country->id;
-        $profile->save();
 
 /*
 

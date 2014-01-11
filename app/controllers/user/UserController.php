@@ -185,7 +185,7 @@ class UserController extends BaseController {
                 Session::forget('loginRedirect');
                 return Redirect::to($r);
             }
-            return Redirect::to('profile');
+            return Redirect::to('/');
         }
         else
         {
