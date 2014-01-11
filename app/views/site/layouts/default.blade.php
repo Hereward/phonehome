@@ -21,6 +21,8 @@
 		================================================== -->
         {{ Basset::show('public.css') }}
 
+        <link href="/assets/css/custom.css" type="text/css" rel="stylesheet">
+
 		<style>
 		@section('styles')
 		@show
