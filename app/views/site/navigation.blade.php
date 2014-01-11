@@ -10,7 +10,7 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">xHome</a></li>
+                <li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">Home</a></li>
                 <li {{ (Request::is('site/quickstart') ? ' class="active"' : '') }}><a href="{{{ URL::to('site/quickstart') }}}">Quick Start</a></li>
                 <li {{ (Request::is('site/pricing') ? ' class="active"' : '') }}><a href="{{{ URL::to('site/pricing') }}}">Pricing</a></li>
                 <li {{ (Request::is('site/downloads') ? ' class="active"' : '') }}><a href="{{{ URL::to('site/downloads') }}}">Downloads</a></li>
