@@ -52,16 +52,10 @@
 
     <!-- Container -->
     <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                <!-- header -->
+        <!-- header -->
+        @include('site/header')
+        <!-- ./ header -->
 
-                @include('site/header')
-
-
-                <!-- ./ header -->
-            </div>
-        </div>
 
         <div class="row">
             <!-- Notifications -->

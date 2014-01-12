@@ -105,6 +105,36 @@ Route::get('contact-us', function()
     return View::make('site/contact-us');
 });
 
+# QUICK START Static Page
+Route::get('quickstart', function()
+{
+    // Return quickstart page
+    return View::make('site/quickstart');
+});
+
+# Pricing Static Page
+Route::get('pricing', function()
+{
+    // Return quickstart page
+    return View::make('site/pricing');
+});
+
+# Downloads Static Page
+Route::get('downloads', function()
+{
+    // Return quickstart page
+    return View::make('site/downloads');
+});
+
+# Downloads Static Page
+Route::get('tour', function()
+{
+    // Return quickstart page
+    return View::make('site/tour');
+});
+
+
+
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
 Route::post('{postSlug}', 'BlogController@postView');

@@ -38,7 +38,7 @@
 }
 
 .container .jumbotron {
-    padding: 30px;
+    padding: 10px 30px;
     margin:0px;
 
 }
@@ -46,3 +46,4 @@
 .profiles td {
     vertical-align: middle !important;
 }
+
