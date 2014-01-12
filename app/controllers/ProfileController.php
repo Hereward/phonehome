@@ -195,7 +195,7 @@ class ProfileController extends \BaseController {
                 ));
 
             // redirect
-            Session::flash('message', 'Successfully created profile. A new profile request has been lodged in our system. This request is pending and should be active within 24
+            Session::flash('message', 'A new profile request has been lodged in our system. This request is pending and should be active within 24
             hours.');
             return Redirect::to('profile');
         }
