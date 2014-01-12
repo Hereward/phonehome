@@ -23,7 +23,7 @@
             <div><strong>Owner ID:</strong> {{$profile->user->id}}</div>
             <div><strong>Local:</strong> {{$profile->local}}</div>
             <div><strong>Bridge:</strong> {{$profile->bridge_number}}</div>
-            <div><strong>Home Number:</strong> {{$profile->home_number}}</div>
+            <div><strong>Home:</strong> {{$profile->home_number}}</div>
             <div><strong>Origin:</strong> {{Origin::find($profile->origin_id)->country->short_name}}</div>
             <div><strong>Remote:</strong> {{Bridge::find($profile->bridge_id)->country->short_name}}</div>
             <div><strong>Status:</strong> {{$profile->status}}</div>

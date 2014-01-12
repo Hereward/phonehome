@@ -33,14 +33,14 @@ class ProfileTableSeeder extends Seeder {
         // Setup Thailand bridge
         $country = Country::where('code', '=', 66)->first();
         $thailand_bridge = new Bridge;
-        $thailand_bridge->number = '0600035178';
+        $thailand_bridge->number = '+66298763456';
         $thailand_bridge->country()->associate($country);
         $thailand_bridge->save();
 
         // Setup Vietnam bridge
         $country = Country::where('code', '=', 84)->first();
         $vietnam_bridge = new Bridge;
-        $vietnam_bridge->number = '0600035179';
+        $vietnam_bridge->number = '+84260003517';
         $vietnam_bridge->country()->associate($country);
         $vietnam_bridge->save();
 
@@ -48,7 +48,7 @@ class ProfileTableSeeder extends Seeder {
         $country = Country::where('code', '=', 61)->first();
         $origin = new Origin;
         $origin->name = 'Home';
-        $origin->number = '0286689235';
+        $origin->number = '+61286689235';
         $origin->user()->associate($user);
         $origin->country()->associate($country);
         $origin->save();
