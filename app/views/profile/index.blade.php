@@ -24,13 +24,14 @@
 
     <div class="col-lg-8">
 
-        <div class="table-responsive">
+        {{-- <div class="table-responsive"> --}}
 
-        <table class="table profiles">
+        <table class="table profiles profiles_list_view">
             <thead>
             <tr>
                 <th>Status</th>
                 <th>Name</th>
+                {{--
                 @if (Auth::user()->hasRole('admin'))
                   <th>Owner</th>
                 @endif
@@ -40,6 +41,7 @@
                 <th>Local</th>
                 <th>Bridge</th>
                 <th>Home</th>
+                --}}
 
 
             </tr>
@@ -52,6 +54,7 @@
                 @elseif ($profile->status == 'off'){{'danger'}}
                 @else{{'warning'}}@endif">&nbsp;&nbsp;</button></td>
                 <td>{{$profile->name}}</td>
+                {{--
                 @if (Auth::user()->hasRole('admin'))
                   <td>{{$profile->user->username}}</td>
                 @endif
@@ -60,6 +63,7 @@
                 <td>{{$profile->local}}</td>
                 <td>{{$profile->bridge_number}}</td>
                 <td>{{$profile->home_number}}</td>
+                --}}
 
 
                 <td><a href="{{ URL::to('profile/' . $profile->id) }}">Details</a></td>
@@ -70,7 +74,7 @@
 
             </tbody>
         </table>
-        </div>
+
 {{--{{$profile->country_short_name}}--}}
 {{-- {{Origin::find($profile->origin_id)->country->short_name}} --}}
 

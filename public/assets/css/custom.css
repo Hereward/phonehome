@@ -43,6 +43,10 @@
 
 }
 
+table.profiles_list_view {
+    max-width: 300px;
+}
+
 .profiles td {
     vertical-align: middle !important;
 }
