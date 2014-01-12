@@ -62,6 +62,8 @@ class ProfileController extends \BaseController {
 
 	}
 
+
+
     private function getOriginDropDown() {
         $dd_obj = Origin::all()->lists('origin','id');
         //$dd_obj[0] = 'Origin';
@@ -304,6 +306,8 @@ class ProfileController extends \BaseController {
         //return View::make('profile.edit',$data);
 	}
 
+
+
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -386,6 +390,13 @@ class ProfileController extends \BaseController {
         Session::flash('message', 'Successfully deleted the profile!');
         return Redirect::to('profile');
 	}
+
+    public function activate($id='') {
+        //die("ID = [$id]");
+        $profile = Profile::find($id);
+        Session::flash('message', "A request to activate the profile named <strong>$profile->name</strong> has been sent. This profile should be active within 1 hour");
+        return $this->index();
+    }
 
 
 

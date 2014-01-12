@@ -28,6 +28,7 @@
                     <tr><td class="text-right">Home Number:</td><td class="text-left">{{$profile->home_number}}</td></tr>
                     <tr><td class="text-right">Origin:</td><td class="text-left">{{Origin::find($profile->origin_id)->country->short_name}}</td></tr>
                     <tr><td class="text-right">Remote:</td><td class="text-left">{{Bridge::find($profile->bridge_id)->country->short_name}}</td></tr>
+                    <tr><td class="text-right">Status:</td><td class="text-left">{{$profile->status}}</td></tr>
 
                     <tr>
                         <td class="text-left">
@@ -38,7 +39,12 @@
                             {{ Form::close() }}
 
                         </td>
-                        <td class="text-right"><a class="btn btn-small btn-success" href="{{ URL::to('profile/' . $profile->id . '/edit') }}">Edit</a></td>
+                        <td class="text-right">
+                            @if ($profile->status == 'off')
+                            <a class="btn btn-small btn-info" href="{{ URL::to('activate/'.$profile->id) }}">Activate</a> &nbsp;
+                            @endif
+                            <a class="btn btn-small btn-success" href="{{ URL::to('profile/' . $profile->id . '/edit') }}">Edit</a>
+                        </td>
                     </tr>
 
 

@@ -133,6 +133,8 @@ Route::get('tour', function()
     return View::make('site/tour');
 });
 
+Route::get('activate/{id}', array('before' => 'detectLang','uses' => 'ProfileController@activate'));
+
 
 
 # Posts - Second to last set, match slug
