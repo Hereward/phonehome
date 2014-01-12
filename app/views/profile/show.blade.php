@@ -36,7 +36,7 @@
                 {{--<a class="btn btn-small btn-danger" href="{{ URL::to('profile/' . $profile->id . '/delete') }}">Delete</a> --}}
                 {{ Form::open(array('url' => 'profile/' . $profile->id, 'class' => 'pull-left')) }}
                 {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Delete this Profile', array('class' => 'btn btn-warning', 'data-confirm'=>"Are you sure you want to delete this profile?")) }}
+                {{ Form::submit('Delete', array('class' => 'btn btn-warning', 'data-confirm'=>"Are you sure you want to delete this profile?")) }}
                 {{ Form::close() }}
 
             </div>
