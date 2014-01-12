@@ -372,7 +372,7 @@ class ProfileController extends \BaseController {
                 ));
 
             // redirect
-            Session::flash('message', 'Successfully edited Profile!');
+            Session::flash('message', 'Successfully edited Profile! Your changes should be active within 1 hour.');
             return Redirect::to('profile');
         }
 	}
