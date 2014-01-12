@@ -7,7 +7,7 @@
 <div class="row">
 
     <div class="col-lg-6">
-        <h2>What's Special About PhoneHome?</h2>
+        <h2>About PhoneHome?</h2>
         <p>
             Whether you travel overseas for work or pleasure, it's always important to be reachable by phone. For a fraction of the cost of typical overseas roaming rates,
             PhoneHome.Asia will allow you to make and receive calls back home while you're travelling. Your associates back home will be able to call you using a local
