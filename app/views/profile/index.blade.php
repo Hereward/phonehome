@@ -86,7 +86,7 @@
                 <a href="{{{ URL::to('profile/create') }}}">Request New Profile</a>
             @endif
             </li>
-            <li><a href="#">Request Number</a></li>
+            
         </ul>
     </div>
 
