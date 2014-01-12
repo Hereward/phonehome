@@ -14,11 +14,14 @@
                 <li {{ (Request::is('site/quickstart') ? ' class="active"' : '') }}><a href="{{{ URL::to('quickstart') }}}">Quick Start</a></li>
                 <li {{ (Request::is('site/pricing') ? ' class="active"' : '') }}><a href="{{{ URL::to('pricing') }}}">Pricing</a></li>
                 <li {{ (Request::is('site/downloads') ? ' class="active"' : '') }}><a href="{{{ URL::to('downloads') }}}">Downloads</a></li>
+                @if (Auth::check())
+                <li><a href="{{{ URL::to('profile') }}}"><b>My Profile</b></a></li>
+                @endif
             </ul>
 
             <ul class="nav navbar-nav pull-right">
                 @if (Auth::check())
-                <li><a href="{{{ URL::to('profile') }}}">Profile</a></li>
+
                 @if (Auth::user()->hasRole('admin'))
                 <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
 
