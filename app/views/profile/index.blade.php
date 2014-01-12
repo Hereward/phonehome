@@ -24,9 +24,9 @@
 
     <div class="col-lg-8">
 
-        <div class="table-responsive">
+        <div>
 
-        <table class="table profiles">
+        <table class="table table-responsive profiles">
             <thead>
             <tr>
                 <th>Status</th>
