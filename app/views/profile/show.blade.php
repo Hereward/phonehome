@@ -19,12 +19,7 @@
 
         <div class="jumbotron text-center">
 
-
-
-                    <div><strong>Owner Short Name:</strong> {{$profile->user->username}}</div>
-
-
-
+            <div><strong>Owner:</strong> {{$profile->user->username}}</div>
             <div><strong>Owner ID:</strong> {{$profile->user->id}}</div>
             <div><strong>Local:</strong> {{$profile->local}}</div>
             <div><strong>Bridge:</strong> {{$profile->bridge_number}}</div>
