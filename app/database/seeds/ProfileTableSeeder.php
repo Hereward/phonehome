@@ -55,20 +55,20 @@ class ProfileTableSeeder extends Seeder {
 
         // PROFILE 1 (Thailand)
         $profile = new Profile;
-        $profile->name = 'Example';
+        $profile->name = 'Thailand';
         $profile->user()->associate($user);
         $profile->origin()->associate($origin);
-        $profile->local = '0917070884';
+        $profile->local = '+66917070884';
         $profile->status = 'active';
         $profile->bridge()->associate($thailand_bridge);
         $profile->save();
 
         // PROFILE 2 (Vietnam)
         $profile = new Profile;
-        $profile->name = 'Example 2';
+        $profile->name = 'Vietnam';
         $profile->user()->associate($user);
         $profile->origin()->associate($origin);
-        $profile->local = '0917070883';
+        $profile->local = '+84917070883';
         $profile->status = 'off';
         $profile->bridge()->associate($vietnam_bridge);
         $profile->save();
